@@ -3,14 +3,16 @@ import ProductService from '../service/product';
 class ProductHandler {
 	constructor() {
 	this.productService = new ProductService();
-		this.products = [{
-			   id: 1,
-			   name: 'Guitar'
-		   },
-		   {
-			   id: 2,
-			   name: 'Banjo'
-		   }
+		this.products = [
+		{
+		   id: 1,
+		   name: 'Guitar'
+			   
+		},
+		{
+		  id: 2,
+		  name: 'Banjo'
+		}
 		]; 			
 	}
 	
