@@ -11,7 +11,7 @@ module.exports = function routes () {
             handler: productHandler.addProduct,
             validate: {
 				payload: {
-				  id : Joi.number().required(),
+				  color : Joi.string(),
 				  name: Joi.string().required().min(3)
 				}
 			}

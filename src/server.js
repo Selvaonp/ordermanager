@@ -1,6 +1,7 @@
 import { Server } from 'hapi';
 import loadPlugins from './lib/loadPlugins';
 import routes from './lib/routes';
+import db from './lib/db'
 const server = new Server();
 server.connection({ port: 9000 });
 
