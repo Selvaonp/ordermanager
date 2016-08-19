@@ -30,6 +30,7 @@
     "watch": "^0.17.1"
   },
   "dependencies": {
+    "bluebird": "^3.4.1",
     "good": "^6.4.0",
     "good-console": "^5.2.0",
     "hapi": "^11.1.4",
@@ -37,6 +38,7 @@
     "hapi-swaggered": "^2.4.1",
     "hapi-swaggered-ui": "^2.1.1",
     "inert": "^3.2.0",
+    "mongoose": "^4.5.9",
     "vision": "^4.0.1"
   },
   "scripts": {

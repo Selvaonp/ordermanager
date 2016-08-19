@@ -1,7 +1,8 @@
- 	
+import ProductService from '../service/product';
 
 class ProductHandler {
 	constructor() {
+	this.productService = new ProductService();
 		this.products = [{
 			   id: 1,
 			   name: 'Guitar'
@@ -38,13 +39,18 @@ class ProductHandler {
 
 	addProduct = (request, reply) =>  {
 		var product = {
-			id: products[products.length - 1].id + 1,
+			color:request.payload.color,
 			name: request.payload.name
 		};
-
-		this.products.push(product);
-
-		reply('created product' + product);
+		this.productService.addProduct(product)
+		.then(function(product){
+			reply('created product' + product);
+		})
+		.catch(function(err) {
+			reply(err);
+		});
+			
+		
 	}
 
 
