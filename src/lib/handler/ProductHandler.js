@@ -18,25 +18,28 @@ class ProductHandler {
 	
 	getProducts = (request, reply) => {
 		console.log('request.query.name', request.query.name);
-		if (request.query.name) {
-			reply(this.findProducts(request.query.name));
-		} else {
-			reply(this.products);
-		}
+		this.productService.getProducts(request.query.name)
+		.then(function(products){
+			reply(products);
+		})
+		.catch(function(err){
+			reply(err);
+		})
 	}
 
 	findProducts = (name) => {
-		return this.products.filter(function(product) {
-			return product.name.toLowerCase() === name.toLowerCase();
-		});
+		return this.getProducts(name);
 	}
 
 	getProduct = (request, reply) => {
-		var product = this.products.filter(function(p) {
-			return p.id == request.params.id;
-		}).pop();
-
-		reply(product);
+		this.productService.getProduct(request.params.id)
+		.then(function(product){
+			reply(product);
+		})
+		.catch(function(err){
+			reply(err);
+		})	
+	
 	}
 
 	addProduct = (request, reply) =>  {
