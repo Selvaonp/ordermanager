@@ -1,5 +1,7 @@
 import ProductHandler from './handler/ProductHandler';
+import OrderHandler from './handler/OrderHandler';
 let productHandler = new ProductHandler();
+let orderHandler = new OrderHandler();
 
 module.exports = function routes () {
 	console.log('in routes options');
@@ -15,7 +17,21 @@ module.exports = function routes () {
 				  name: Joi.string().required().min(3)
 				}
 			}
-        } }
+        } },
+
+        { method: 'POST', path: '/order', config: {
+            handler: orderHandler.addOrder,
+            validate: {
+				payload: {
+				  qty : Joi.number(),
+				  status: Joi.string().required().min(3),
+				  productId: Joi.string()
+				}
+			}
+        } },
+		{ method: 'GET', path: '/product/{id}/orders', config: { handler: orderHandler.getOrdersForProduct } }
+
+		
     ];
 };
 
