@@ -1,6 +1,8 @@
 import ProductModel from '../model/product';
 import OrderModel from '../model/order';
 import _ from 'lodash';
+import async from 'async';
+import Promise from 'bluebird';
 
 class OrderService {
 	addOrder = (order) => {
@@ -40,6 +42,32 @@ class OrderService {
 			console.log(err);
 			throw {message: err};
 		})
+	}
+	
+	getAllOrdersProdcuts = () => {
+	   let orderPromise =  new Promise(function (resolve, reject) {
+			async.parallel([
+				function(callback){ 
+					callback(null, [{name: "Product A", description: "Desc for ProductA"},{name: "Product B", description: "Desc for ProductB"}]);
+				},
+				function(callback){ 
+					callback(null, [{qty: 50, status: "Pending"},{qty: 70, status: "Completed"}]);			
+				}
+			], function(err, results) {
+				console.log('results----->', results);
+				if(err) reject(err);
+				resolve(results);
+				//callback(null, results);
+				
+			});	   
+		});
+		return orderPromise;
+	}
+
+	getOrderConfig = () => {
+		let response = {config: {a:1, b:2}};
+		console.log('in getOrderConfig service class', response);
+		return response;
 	}
 	
 }

@@ -29,7 +29,11 @@ module.exports = function routes () {
 				}
 			}
         } },
-		{ method: 'GET', path: '/product/{id}/orders', config: { handler: orderHandler.getOrdersForProduct } }
+		{ method: 'GET', path: '/product/{id}/orders', config: { handler: orderHandler.getOrdersForProduct } },
+		{ method: 'GET', path: '/product/orders', config: { handler: orderHandler.getAllOrdersProdcuts } },
+		{ method: 'GET', path: '/order/config', config: { handler: orderHandler.getOrderConfig } }				
+		
+		
 
 		
     ];

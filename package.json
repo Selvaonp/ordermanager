@@ -30,6 +30,7 @@
     "watch": "^0.17.1"
   },
   "dependencies": {
+    "async": "^2.0.1",
     "bluebird": "^3.4.1",
     "good": "^6.4.0",
     "good-console": "^5.2.0",
