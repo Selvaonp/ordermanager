@@ -22,6 +22,7 @@
     "babel-preset-stage-1": "^6.13.0",
     "babel-register": "^6.3.13",
     "chai": "^3.5.0",
+    "cucumber": "^1.2.2",
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "^2.1.1",
     "isparta": "^4.0.0",
@@ -29,7 +30,8 @@
     "mocha": "^2.3.4",
     "mocha-gherkin": "^0.1.15",
     "nodemon": "^1.8.1",
-    "watch": "^0.17.1"
+    "watch": "^0.17.1",
+    "zombie": "^4.2.1"
   },
   "dependencies": {
     "async": "^2.0.1",
@@ -55,7 +57,8 @@
     "tdd": "watch 'clear && npm run -s test' src test",
     "tdd:lint": "watch 'clear && npm run -s lint && npm run -s test' src test",
     "build": "babel src --out-dir es5",
-	"buildtest": "babel test --out-dir es5test"
+    "buildtest": "babel test --out-dir es5test",
+    "testfeature": "cucumber-js features/first.feature"
   },
   "eslintConfig": {
     "extends": "airbnb/base",
