@@ -35,3 +35,4 @@ tmp
 local.yml
 .npmrc
 es5
+es5test
