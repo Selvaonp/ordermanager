@@ -64,10 +64,10 @@ class OrderService {
 		return orderPromise;
 	}
 
-	getOrderConfig = () => {
+	getOrderConfig = (callback) => {
 		let response = {config: {a:1, b:2}};
 		console.log('in getOrderConfig service class', response);
-		return response;
+		callback(null, response);
 	}
 	
 }
