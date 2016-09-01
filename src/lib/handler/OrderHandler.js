@@ -36,8 +36,10 @@ class OrderHandler {
 	
 	getAllOrdersProdcuts = (request, reply) =>  {
 
-		this.orderService.getAllOrdersProdcuts()
+		//this.orderService.getAllOrdersProdcuts()
+		this.orderService.getProductAndOrders(request.params.id)
 		.then(function(allData){
+			console.log('allData', allData);
 			reply(allData);
 		})
 		.catch(function(err) {

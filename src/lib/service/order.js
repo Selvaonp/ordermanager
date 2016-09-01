@@ -3,7 +3,9 @@ import OrderModel from '../model/order';
 import _ from 'lodash';
 import async from 'async';
 import Promise from 'bluebird';
+import reversePopulate from 'mongoose-reverse-populate';
 
+let reversePopulatePromise =  Promise.promisify(reversePopulate);
 class OrderService {
 	addOrder = (order) => {
 		let orderModel = new OrderModel(order);
@@ -18,6 +20,33 @@ class OrderService {
 		return promise;
 	}
 	
+	getProductAndOrders = (productId) => {
+		let query = {};
+		if(productId) {
+			query._id = productId;
+		}	
+	 return ProductModel.find(query).lean().exec()
+	.then((products) => {
+		console.log('products is =' , products);
+		let opts = {
+			modelArray: products,
+			storeWhere: "orders",
+			arrayPop: true,
+			mongooseModel: OrderModel,
+			idField: "productId"
+		}
+		return reversePopulatePromise(opts);
+	
+	})
+	.then((popProducts) => {
+		console.log('data set is =', popProducts);
+		return popProducts;
+	})
+	.catch((err) => {
+		console.log('error in reversepopulate', err);
+	})
+	
+	}
 	getOrdersForProduct = (productId) => {
 		let query = {};
 		if(productId) {
