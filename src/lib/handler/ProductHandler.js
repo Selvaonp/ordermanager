@@ -38,7 +38,7 @@ class ProductHandler {
 		};
 		this.productService.addProduct(product)
 		.then(function(product){
-			reply('created product' + product);
+			reply(product);
 		})
 		.catch(function(err) {
 			reply(err);

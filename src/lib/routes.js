@@ -7,9 +7,9 @@ module.exports = function routes () {
 	console.log('in routes options');
     var Joi = require('joi');
     return [
-        { method: 'GET', path: '/products', config: { handler: productHandler.getProducts, validate: {query: { name: Joi.string() } }} },
-        { method: 'GET', path: '/products/{id}', config: { handler: productHandler.getProduct } },
-        { method: 'POST', path: '/products', config: {
+        { method: 'GET', path: '/product', config: { handler: productHandler.getProducts, validate: {query: { name: Joi.string() } }} },
+        { method: 'GET', path: '/product/{id}', config: { handler: productHandler.getProduct } },
+        { method: 'POST', path: '/product', config: {
             handler: productHandler.addProduct,
             validate: {
 				payload: {
@@ -29,8 +29,8 @@ module.exports = function routes () {
 				}
 			}
         } },
-		{ method: 'GET', path: '/product/{id}/orders', config: { handler: orderHandler.getAllOrdersProdcuts } },
-		{ method: 'GET', path: '/product/orders', config: { handler: orderHandler.getAllOrdersProdcuts } },
+		{ method: 'GET', path: '/product/{id}/order', config: { handler: orderHandler.getAllOrdersProdcuts } },
+		{ method: 'GET', path: '/product/order', config: { handler: orderHandler.getAllOrdersProdcuts } },
 		{ method: 'GET', path: '/order/config', config: { handler: orderHandler.getOrderConfig } }				
 		
 		

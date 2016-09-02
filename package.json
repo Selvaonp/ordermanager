@@ -30,6 +30,7 @@
     "mocha": "^2.3.4",
     "mocha-gherkin": "^0.1.15",
     "nodemon": "^1.8.1",
+    "request": "^2.74.0",
     "watch": "^0.17.1",
     "zombie": "^4.2.1"
   },
@@ -59,7 +60,7 @@
     "tdd:lint": "watch 'clear && npm run -s lint && npm run -s test' src test",
     "build": "babel src --out-dir es5",
     "buildtest": "babel test --out-dir es5test",
-    "testfeature": "cucumber-js features/first.feature"
+    "testfeature": "cucumber-js"
   },
   "eslintConfig": {
     "extends": "airbnb/base",
